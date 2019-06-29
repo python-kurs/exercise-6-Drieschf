@@ -12,8 +12,7 @@ files = {"seviri_l1b_nc" : dateien}
 scn = Scene(filenames=files)
 
 # 2. Load the composites "natural_color" and "convection" [2P]
-scn.load(["natural_color"])
-scn.load(["convection"])
+scn.load(["natural_color", "convection"])
 
 # 3. Resample the fulldisk to the Dem. Rep. Kongo and its neighbours [4P] 
 #    by defining your own area in Lambert Azimuthal Equal Area. 
@@ -39,8 +38,8 @@ area_extent = (llx,lly,urx,ury)
 area_def = AreaDefinition(area_id, proj_id, description, proj_dict, width, height, area_extent)
 
 local_scn = scn.resample(area_def)
-local_scn.show("natural_color")
-local_scn.show("convection")
+#local_scn.show("natural_color")
+#local_scn.show("convection")
 
 # 4. Save both loaded composites of the resampled Scene as simple png images. [2P]
 local_scn.save_datasets(writer = "simple_image",
